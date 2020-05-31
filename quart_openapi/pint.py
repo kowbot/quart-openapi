@@ -196,7 +196,7 @@ class BaseRest():
                 setattr(resource, f'_pint_{resource.__name__}_view_wrapper', view_func)
             methods = list(resource.methods)
             self._resources.append((resource, path, methods))
-        super().add_url_rule(path, endpoint, view_func, methods,  # pylint: disable=no-member
+        super().add_url_rule(path, endpoint=endpoint, view_func=view_func, methods=methods,  # pylint: disable=no-member
                              provide_automatic_options=provide_automatic_options, **kwargs)
 
     def param(self, name: str, description: Optional[str] = None, _in: str = 'query', **kwargs: Any) -> Callable:
